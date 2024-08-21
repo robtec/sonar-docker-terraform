@@ -1,4 +1,5 @@
 resource "aws_db_instance" "sonar_pg_db" {
+  identifier           = "sonar-db" 
   allocated_storage    = 10
   db_name              = "sonar"
   engine               = "postgres"
@@ -28,7 +29,7 @@ resource "random_password" "pg_password" {
 resource "aws_security_group" "public_pg_sg" {
   name = "Public PostgreSQL"
   description = "Allow PostgreSQL traffic"
-  
+
   vpc_id = aws_default_vpc.default.id
 
   ingress {
