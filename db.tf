@@ -28,9 +28,8 @@ resource "random_password" "pg_password" {
 resource "aws_security_group" "public_pg_sg" {
   name = "Public PostgreSQL"
   description = "Allow PostgreSQL traffic"
-
-  # Attach to the correct VPC
-  vpc_id = var.vpc_id
+  
+  vpc_id = aws_default_vpc.default.id
 
   ingress {
     from_port = 5432
