@@ -1,29 +1,18 @@
-resource "aws_db_instance" "sonar_pg_db" {
-  identifier           = "sonar-db" 
-  allocated_storage    = 10
-  db_name              = "sonar"
-  engine               = "postgres"
-  engine_version       = "16"
-  instance_class       = "db.t3.micro"
-  username             = "sonar"
-  password             = random_password.pg_password.result
-  parameter_group_name = aws_db_parameter_group.sonar.name
-  skip_final_snapshot  = true
-}
-
-resource "aws_db_parameter_group" "sonar" {
-  name   = "sonar"
-  family = "postgres16"
-
-  parameter {
-    name  = "log_connections"
-    value = "1"
-  }
-}
-
 resource "random_password" "pg_password" {
   length  = 32
   special = false
+}
+
+resource "aws_db_instance" "sonar_pg_db" {
+  identifier           = var.database_identifer
+  allocated_storage    = 20
+  db_name              = var.database_name
+  engine               = "postgres"
+  engine_version       = "16"
+  instance_class       = "db.t3.micro"
+  username             = var.database_username
+  password             = random_password.pg_password.result
+  skip_final_snapshot  = true
 }
 
 resource "aws_security_group" "public_pg_sg" {

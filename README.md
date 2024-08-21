@@ -21,5 +21,5 @@ $ terraform apply
 ## Current Configuration
 
 - PostgreSQL Database
-- Docker Platform
+- Docker Platform (EC2 running 2vcpu and 4gb RAM)
 - SonarQube Community edition
