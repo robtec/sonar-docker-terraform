@@ -17,3 +17,9 @@ $ terraform plan
 
 $ terraform apply
 ```
+
+## Current Configuration
+
+- PostgreSQL Database
+- Docker Platform
+- SonarQube Community edition
