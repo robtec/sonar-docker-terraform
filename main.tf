@@ -45,6 +45,8 @@ resource "aws_elastic_beanstalk_environment" "sonar_env" {
   application         = aws_elastic_beanstalk_application.sonar.name
   solution_stack_name = "${var.solution_stack_name}"
 
+  version_label = aws_elastic_beanstalk_application_version.sonar_version.name
+
   setting {
     namespace = "aws:elasticbeanstalk:environment"
     name      = "LoadBalancerType"
